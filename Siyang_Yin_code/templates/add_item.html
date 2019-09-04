@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="../static/js/add_item.js"></script>
+        <style>
+            .btn{
+/*             padding-top:20px;             */
+/*             margin-left:100px;            */
+            }
+            .container{
+            margin:50px;
+            text-align:center;            
+            }
+            .attr{
+            margin:10px;
+/*             padding:5px; */
+            }
+            #head{
+            margin-bottom:40px;
+            }
+            #ajaxForm{
+/*             padding:20px; */
+            text-align:left;
+            }
+        </style>
+    </head>
+{% extends "/layout.html" %}    
+    <body>
+        {% block nav %}        
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                {% block head %}
+                    {{ super() }}            
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">        
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/view_item">View_item</a>
+                            </li>         
+                        </ul> 
+                    </div>
+                {% endblock %}         
+            </nav>
+            <div class="container">
+                    <h3 id="head">Input the film information you want to add:</h3>        
+<!--                     <div id="link"><a>link</a></div><br> -->
+                <div class="row">    
+                    
+                    <div class="col-md-2"></div>
+                    <form id="add_form" class="col-md-8" method="post" target="hidden_frame">
+<!--                         <iframe name="fraSubmit" id="fraSubmit"> -->
+<!--                         Id: <input type="text" name="Id" class="attr"/><br> -->
+                        imdbId: <input type="text" name="imdbId" class="attr"/><br>
+                        Imdb Link: <input type="text" name="Imdb Link" class="attr"/><br>                        
+                        Title: <input type="text" name="Title" class="attr"/><br>
+                        Genre: <input type="text" name="Genre" class="attr"/><br>
+                        Poster: <input type="text" name="Poster" class="attr"/><br>
+                        Director: <input type="text" name="Director" class="attr"/><br>
+                        Actors: <input type="text" name="Actors" class="attr"/><br>
+<!--                         Year: <input type="text" name="Year" class="attr"/><br> -->
+                        Runtime(Minutes): <input type="text" name="Runtime(Minutes)" class="attr"/><br>
+                        Rating: <input type="text" name="Rating" class="attr"/><br>
+                        Votes: <input type="text" name="Votes" class="attr"/><br>
+                        Revenue(Millions): <input type="text" name="Revenue(Millions)" class="attr"/><br>
+                        Metascore: <input type="text" name="Metascore" class="attr"/><br>
+                        Summary: <input type="text" name="Summary" class="attr"/><br>                        
+    <!--                     <textarea id="input" class="form-control mr-sm-2" placeholder="Input the item to add"></textarea> -->
+<!--                         <div class="col-md-4"></div>                         -->
+                        <button id="submit" class="btn btn-primary col-md-2" type="submit">submit</button>
+<!--                         </iframe> -->
+                    </form>   
+<!--                     <div id="link" class="col-md-2"><a href="/view_item/5">link to the new item</a></div>   -->
+                    <div id="link" class="col-md-2"></div>  
+                    <iframe name="hidden_frame" id="hidden_frame" style="display:none"></iframe>
+                </div>
+            </div>
+        {% endblock %}  
+    </body>
+</html>
+
+
+

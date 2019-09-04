@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
+ -->     
+        
+        <script src="../static/js/search.js"></script>
+        <script src="../static/js/ppc.js"></script>
+        <style>
+        
+			#row1{
+                background-color:Gainsboro;
+                padding:80px;
+                padding-left:20px;
+                font-size:40px;
+			margin-bottom:40px;
+			}			
+			.list_label{
+                padding:10px;
+                background-color:LightBlue;
+                font-weight:bold;
+                font-size:20px;
+                margin-bottom:20px;
+			}
+			.col{
+    			margin-right:20px;
+			}
+			.entry{
+                padding:2px;
+                height:30px;
+                border: 1px solid black;
+                white-space:nowrap;
+			}
+			.non_ppc_entry{
+                padding:2px;
+                height:30px;
+                border: 1px solid black;
+                white-space:nowrap;
+			}
+			.ppc_entry{
+                padding:2px;
+                height:30px;
+                border: 1px solid black;
+                white-space:nowrap;
+			}			
+            .droppable{
+                background: yellow;
+            }
+            .highlightDRAGGING.highlightHOVER{
+                background-color: darkblue;
+            }
+            .highlightDRAGGING{
+                background-color: blue;
+            }        
+        
+        
+            .item{
+/*             margin:15px; */
+/*             padding:10px; */
+            }
+            #window{
+            z-index:0;
+            }
+            .float{
+/*             position: fixed; */
+/*             top: 100; */
+/*             left: 0;             */
+            z-index:1;
+            }
+            #left{
+/*             position: fixed; */
+            z-index:1;
+/*             left:50px; */
+            text-align:center;
+            }
+            #mid{
+/*             position: fixed; */
+            z-index:1;
+/*             width:300px; */
+/*             margin:0 auto; */
+/* 
+            margin-left:0 auto;
+            margin-right:0 auto;
+ */
+            text-align:center;
+/*             left:500px; */
+/*             right:500px; */
+
+            }
+            #right{
+/*             position: fixed; */
+            z-index:1;
+/*             right:50px; */
+            text-align:center;
+            }
+            #study_room{
+/*             width:440px; */
+            height:350px;
+            background-color:LightBlue;
+            }
+            .study_room_btn_row{
+/*             width:440px; */
+            background-color:LightBlue;            
+            }
+            .num{
+            font-size:25px;
+            font-family: "Georgia";               
+            }
+            .ko{
+            font-size:50px;
+            font-family: "Times New Roman";
+/*             font-weight: bold; */
+            }
+            .en{
+            font-size:35px;
+            font-family: "Times New Roman";           
+            }
+            .pro{
+            font-size:25px;
+            font-family: "Times New Roman";                
+            }
+        </style>        
+        
+    </head>
+{% extends "/layout.html" %}    
+    <body>
+            {% block nav %}
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    {% block head %}
+                        {{ super() }}             
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">        
+<!-- 
+                                <li class="nav-item active">
+                                <a class="nav-link" href="/view_item">View</a>
+                                </li>            
+                                <li class="nav-item active">
+                                <a class="nav-link" href="/take_quiz">Quiz</a>
+                                </li>    
+ -->     
+                            </ul> 
+                             </div>  
+<!-- 
+                            <form id="search_form" class="form-inline my-2 my-lg-0">
+                                <input id="input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <button id="search" class="btn btn-outline-success" type="submit">Search</button>
+                            </form>   
+ -->                            
+                    {% endblock %}
+                </nav>
+<!--             {% endblock %}      -->
+            
+             <div class="container">
+<!--                 <br><br>         -->
+                 <div class="row">                
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </div>
+                </div>
+                <br><br>
+       
+<!--                 <div id="window" class="row"></div>              -->
+      
+                 <div class="row">
+
+                    <div class="col-md-3" id="left">
+                        <div id="ppc_label" class="list_label ui-widget-header">Words To Learn</div>
+                        <div id="ppc_list"></div>
+                    </div>	
+                    
+                    <div class="col-md-6" id="mid">
+                        <div class="list_label ui-widget-header">Study Room</div>
+                        <div id="study_room">
+                    
+                            
+                        </div>
+                        <div class="study_room_btn_row">
+                            <button id="play" class="btn btn-primary col-md-3">Play</button>   
+                            <button id="previous" class="btn btn-primary col-md-3">Previous</button>   
+                            <button id="next" class="btn btn-primary col-md-3">Next</button>   
+                        </div>
+                    </div>                    
+                    
+     
+                    
+                    <div class="col-md-3" id="right">
+                        <div id="non_ppc_label" class="list_label ui-widget-header">Words Already Learned</div>
+                        <div id="quiz_label" class="list_label ui-widget-header"><a class="nav-link" href="/take_quiz">Take a Quiz</a></div>                        
+                        <div id="non_ppc_list"></div>
+                    </div>                    
+                    
+                </div>                  
+                
+<!--                 <div id="window" class="row"></div>        -->    
+                
+             
+                
+            </div>  
+            {% endblock %}                
+    </body>
+</html>
+
+
+

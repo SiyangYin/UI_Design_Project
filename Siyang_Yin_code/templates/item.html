@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<!--         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/style.css">         -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        
+        <script src="../static/js/item.js"></script>
+        <style>
+            img{
+            margin-top:10px;
+            margin-bottom:20px;
+            margin-right:20px;
+/*             padding:10px; */
+            }
+            .row{
+            margin-bottom:10px;
+            }
+            #Id{
+            font-weight:bold;
+            font-size:30px;
+            }
+            #Title{
+            font-weight:bold;
+            font-size:25px;
+            }
+            #Rating{
+            font-weight:bold;
+            font-size:30px;
+            }            
+            #Genre{
+            font-weight:bold;
+            font-size:25px;
+            }      
+        </style>
+    </head>
+{% extends "/layout.html" %}    
+    <body>
+            {% block nav %}
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    {% block head %}
+                        {{ super() }}             
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">        
+                                <li class="nav-item active">
+                                <a class="nav-link" href="/view_item">View_item</a>
+                                </li>         
+                            </ul> 
+                             </div>      
+                    {% endblock %}
+                </nav>
+         
+             <div class="container">
+                <br><br>        
+                <div id="window" class="row">
+                
+                    <img src="{{item['Poster']}}"/>                
+                    <div class="col-md-12">
+                    <span id="Id">Id: {{item["Id"]}} </span><br>
+                    imdbId: {{item["imdbId"]}} <br>
+                    Imdb Link: {{item["Imdb Link"]}} <br>
+                    <span id="Title">Title: {{item["Title"]}} </span><br> 
+                    <span id="Genre">Genre: {{item["Genre"]}}</span><br>
+                    
+
+                    Director: {{item["Director"]}}<br>
+                    Actors: {{item["Actors"]}}<br>
+<!--                     Year: {{item["Year"]}}<br> -->
+                    Runtime(Minutes): {{item["Runtime (Minutes)"]}}<br>
+                    <span id="Rating">Rating: {{item["Rating"]}}</span><br>
+                    Votes: {{item["Votes"]}}<br>
+                    Revenue(Millions): {{item["Revenue (Millions)"]}}<br>
+                    Metascore: {{item["Metascore"]}}<br>      
+                    Summary: {{item["Summary"]}}<br>
+                    </div>
+                </div>            
+            </div>  
+            {% endblock %}   
+    </body>
+</html>
+

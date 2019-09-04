@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="../static/js/view_item.js"></script>   
+        <script src="../static/js/ppc.js"></script>
+<!--         <script src="../static/js/quiz.js"></script> -->
+
+        <style>
+/* 
+            body{
+            font-family:cursive;                 
+            }
+ */
+            div{
+            font-family:cursive;                 
+            }
+			#row1{
+                background-color:Gainsboro;
+                padding:80px;
+                padding-left:20px;
+                font-size:40px;
+			margin-bottom:40px;
+			}			
+			.list_label{
+                padding:10px;
+/*                 background: linear-gradient(#4776e6,#8e54e9);                 */
+/*                 background-color:LightBlue; */
+                font-weight:bold;
+                font-size:20px;
+                margin-bottom:20px;
+                z-index:4;
+                border-radius:10px;                    
+			}
+			.ui-widget-header{
+                background: linear-gradient(#4776e6,#8e54e9);                			
+			}
+			.col{
+    			margin-right:20px;
+			}
+			.entry{
+                padding:2px;
+                height:30px;
+                border: 1px solid black;
+                white-space:nowrap;
+/*                 border:1px solid; */
+                border-radius:5px;                
+			}
+			.non_ppc_entry{
+                padding:2px;
+                height:30px;
+                border: 1px solid black;
+                white-space:nowrap;
+                z-index:1;
+			}
+			.ppc_entry{
+                padding:2px;
+                height:30px;
+                border: 1px solid black;
+                white-space:nowrap;
+                z-index:1;
+			}			
+            .droppable{
+                background: yellow;
+            }
+            .highlightDRAGGING.highlightHOVER{
+                background-color: Gray;
+            }
+            .highlightDRAGGING{
+/*                 background-color: Gray; */
+            }        
+        
+        
+            .item{
+/*             margin:15px; */
+/*             padding:10px; */
+            }
+            #window{
+            z-index:0;
+            margin:20px;
+            }
+            .float{
+/*             position: fixed; */
+/*             top: 100; */
+/*             left: 0;             */
+            z-index:1;
+            }
+            #left{
+/*             position: fixed; */
+/*             z-index:1; */
+/*             left:50px; */
+            text-align:center;
+            border-radius:10px;                  
+            }
+            #mid{
+/*             position: fixed; */
+/*             z-index:1; */
+/*             width:300px; */
+/*             margin:0 auto; */
+/* 
+            margin-left:0 auto;
+            margin-right:0 auto;
+ */
+            text-align:center;
+            border-radius:10px;                  
+/*             left:500px; */
+/*             right:500px; */
+
+            }
+            #right{
+/*             position: fixed; */
+/*             z-index:1; */
+/*             right:50px; */
+            text-align:center;
+            border-radius:10px;                  
+            }
+            #study_room{
+/*             width:440px; */
+/*             background-image:url(../static/image/card.jpg); */
+/*             background-repeat:no-repeat; */
+/* 
+            background-size:cover;
+            -moz-background-size:cover;
+ */
+/*             -webkit-background-size:cover; */
+/* 
+            object-fit:cover;
+            width:100%;
+            height:100%;
+            max-width:100%;
+            max-height:100%;    
+ */        
+            border-radius:10px;          
+            height:350px;
+/*             background-color:Darkgray; */
+            z-index:0;
+            }
+            #study_room:hover{
+            background-color: White;            
+            }
+            .entry:hover{
+            background-color: White;            
+            }     
+/* 
+            div:hover{
+            background-color: White;            
+            }
+            .container:hover{
+            background-color: Gainsboro;            
+            }
+ */
+            .study_room{
+/* 
+            position:sticky;
+            background-image:url(../static/image/card.jpg);
+            -webkit-background-size:cover;            
+            background-repeat:no-repeat;
+ */
+/*             width:440px; */
+/*             background-color:Aqua;     */
+            padding:10px;
+            }
+            .study_room_with_btn{
+/*             background-image:url(../static/image/card.jpg); */
+/*             -webkit-background-size:cover;             */
+            }
+            .num{
+            font-size:25px;
+/*             font-family: "Georgia";                */
+            }
+            .ko{
+            font-size:50px;
+/*             font-family: "Times New Roman"; */
+/*             font-weight: bold; */
+            }
+            .en{
+            font-size:35px;
+/*             font-family: "Times New Roman";            */
+            }
+            .pro{
+            font-size:25px;
+/*             font-family: "Times New Roman";                 */
+            }
+            .dropdown{
+            z-index:5;
+            margin-bottom:40px;
+/*             width:100%; */
+/*             height:500px; */
+            text-align:center;
+/*             min-width:100%; */
+            }
+            .btn{
+/*             background: linear-gradient(#8e2de2,#4a00e0);             */
+            margin:5px;
+/*             margin-top:50px; */
+/*             margin-bottom:20px; */
+            }
+            .row{
+            margin-bottom:50px;
+            }
+            #dropdownMenuButton_1{
+            margin-top:50px;
+            margin-left:0px;
+            background: linear-gradient(#8e2de2,#4a00e0);            
+            }
+            #dropdownMenuButton_2{
+            margin-top:50px;
+            margin-right:0px;
+            background: linear-gradient(#8e2de2,#4a00e0);            
+            }       
+/* 
+            #play{
+            background: linear-gradient(#8e2de2,#4a00e0);
+            }
+ */
+/* 
+            .dropdown-toggle{
+            color:Yellow;
+            }
+            #got_it{
+            color:Lime;
+            }
+ */
+        </style>        
+        
+    </head>
+{% extends "/layout.html" %}    
+    <body>
+            {% block nav %}
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    {% block head %}
+                        {{ super() }}             
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">        
+<!-- 
+                                <li class="nav-item active">
+                                <a class="nav-link" href="/view_item">View</a>
+                                </li>            
+                                <li class="nav-item active">
+                                <a class="nav-link" href="/take_quiz">Quiz</a>
+                                </li>    
+ -->     
+                            </ul> 
+                             </div>  
+<!-- 
+                            <form id="search_form" class="form-inline my-2 my-lg-0">
+                                <input id="input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <button id="search" class="btn btn-outline-success" type="submit">Search</button>
+                            </form>   
+ -->                            
+                    {% endblock %}
+                </nav>
+    
+            
+             <div class="container">
+<!--                 <br><br>         -->
+                
+                 <div class="row">                
+                    <div class="col-md-3 dropdown">
+                      <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Word Lists to Learn
+                      </button>
+                      <div id="to_learn_window" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<!-- 
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+ -->
+                      </div>
+                      </div>
+                      <div class="col-md-6"></div>
+                      <div class="col-md-3 dropdown">
+                      <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton_2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Word Lists Already Learned
+                      </button>
+                      <div id="learned_window" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<!-- 
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+ -->
+                      </div>
+
+                    </div>
+                </div>                
+                
+<!-- 
+                <div id="window" class="row">
+                </div>                  
+ -->
+                 <div class="row"> 
+                    <div class="col-md-3" id="left">
+<!--                         <button id="clear_to_learn" class="btn btn-secondary col-md-6">Clear</button> -->
+                        <div id="ppc_label" class="list_label ui-widget-header">Words To Learn</div>
+                        <div id="ppc_list"></div>
+                        <button id="clear_to_learn" class="btn btn-secondary col-md-6">Clear</button>
+                    </div>	
+                    
+                    <div class="col-md-6" id="mid">
+                        <div class="list_label ui-widget-header">Study Room</div>
+                        <div class="study_room_with_btn">
+                            <div id="study_room" class='list_text ui-widget-header'>
+    <!--                             <img src="../static/image/crad.jpg"> -->
+                            </div>
+                            <div class="study_room_btn_row">
+                                <button id="play" class="btn btn-info col-md-4">Play Pronunciation</button>   
+    <!--                             <div class="col-md-1"></div> -->
+    <!--                             <button id="previous" class="btn btn-primary col-md-3">Previous</button>  -->  
+    <!--                             <button id="next" class="btn btn-primary col-md-3">Next</button>    -->
+                                <button id="got_it" class="btn btn-success col-md-3">Got it</button>                             
+                            </div>
+                        </div>
+                    </div>                    
+                    
+     
+                    
+                    <div class="col-md-3" id="right">
+<!--                         <button id="clear_learned" class="btn btn-secondary col-md-6">Clear</button>    -->                 
+                        <div id="non_ppc_label" class="list_label ui-widget-header">Words Already Learned</div>                                                
+                        <div id="non_ppc_list"></div>
+                        <button id="clear_learned" class="btn btn-secondary col-md-6">Clear</button>                           
+                        <div id="quiz_label" class="list_label ui-widget-header btn-secondary"><a class="nav-link" href="/take_quiz">Take a Quiz</a></div>
+                    </div>                    
+                    
+                </div>                  
+                
+<!-- 
+                <div class="bottom">
+                </div>  
+ --> 
+        
+
+                
+             
+                
+            </div>  
+            {% endblock %}                
+    </body>
+</html>
+
+
+

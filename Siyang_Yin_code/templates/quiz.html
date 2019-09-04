@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="../static/js/quiz.js"></script>
+        <style>
+            .btn{
+/*             padding-top:20px;             */
+/*             margin:10px;            */
+            }
+            .btn-purple{
+            background-color:Fuchsia;
+            }
+            .container{
+/*             margin:50px; */
+            text-align:center;            
+            }
+            .attr{
+/*             margin:10px; */
+/*             padding:5px; */
+            }
+            #head{
+            margin-top:40px;
+            margin-bottom:40px;
+            font-size:40px;
+            font-weight:bold;
+            color:Black;
+            }
+            #ajaxForm{
+/*             padding:20px; */
+            text-align:left;
+            }
+            input{
+/*             margin:20px; */
+/*             padding:20px; */
+            }
+            span{
+            margin-left:20px;
+            margin-right:20px;
+/*             padding:20px; */
+            text-align:left;
+/*             font-weight:bold; */
+            font-size:23px;
+/*             font-family:cursive; */
+/*             font color:White; */
+/*             font-size:20px; */
+            }
+            .score{
+            margin:20px;
+            font-size:30px;
+            font-weight:bold;
+            color:Black;
+            }
+            .answer{
+/*             margin:40px; */
+/*             font-size:40px; */
+            font-weight:bold;
+            color:Black;            
+            }
+            .cong{
+            margin:20px;
+            font-size:30px;
+            font-weight:bold;
+            color:Black;            
+            }
+            .quiz{
+/*             background-color:White;             */
+            margin:10px;
+            padding:5px;
+            font-family:cursive;            
+/*             margin:40px; */
+            font-size:20px;
+/*             font-weight:bold; */
+            color:Black;
+            border:1px solid Darkgray;
+            border-radius:25px;
+            }
+            .quiz:hover{
+            background-color: White;            
+            }            
+            #submit{
+            margin:20px;
+            }
+            .emphasis1{
+            font-size:32px;
+            font-weight:bold;
+            color:Black;
+            }
+            .emphasis2{
+            font-size:27px;
+            font-weight:bold;
+            color:Dimgray;
+            }
+            .other{
+            font-size:20px;
+            color:gray;
+            }
+            .options{
+            font-size:23px;
+            font-weight:bold;
+            color:Black;
+            }
+            .answer_statement{
+            color:gray;
+            }
+            .score_statement{
+            font-size:23px;
+            color:gray;
+            }
+        </style>
+    </head>
+{% extends "/layout.html" %}    
+    <body>
+        {% block nav %}        
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                {% block head %}
+                    {{ super() }}            
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">        
+<!-- 
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/view_item">View_item</a>
+                            </li>   
+ -->      
+                        </ul> 
+                    </div>
+                {% endblock %}         
+            </nav>
+            <div class="container">
+                    <h3 id="head">Quiz 1</h3>        
+<!--                     <div id="link"><a>link</a></div><br> -->
+                <div class="row">    
+                    
+<!--                     <div class="col-md-2"></div> -->
+                    <form id="quiz_form" method="post" target="hidden_frame">
+<!--                     <form id="quiz_form" class="col-md-12" method="post" target="hidden_frame"> -->
+<!-- 
+                        <div id="left_col" class="col-md-5"></div>
+                        <div id="right_col" class="col-md-5"></div>
+ -->
+<!-- 
+                        <div class="quiz">
+                            <span>1. What is the meaning of "저" ?</span><br><br>
+                            <input type="radio" name="quiz_1" value="A"> A. I
+                            <input type="radio" name="quiz_1" value="B"> B. I and you
+                            <input type="radio" name="quiz_1" value="C"> C. both of us
+                            <input type="radio" name="quiz_1" value="D"> D. he
+                            <br><br>
+                        </div>
+<!~~                    
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ ~~>    
+                        <div class="quiz">
+                            <span>2. Which meaning corresponding to this pronunciation ?</span>
+                            <audio id="aud_6Q" src="https://www.book2.nl/book2/KO/SOUND/0007.mp3"></audio>
+                            <button id="btn_6Q" class="btn btn-primary col-md-1">Play</button> <br><br> 
+                            <input type="radio" name="quiz_6" value="A"> A. he and she
+                            <input type="radio" name="quiz_6" value="B"> B. they both
+                            <input type="radio" name="quiz_6" value="C"> C. the man
+                            <input type="radio" name="quiz_6" value="D"> D. the woman
+                            <br><br>
+                        </div>
+
+                        <div class="quiz">
+                            <span>3. How to say "he and she" in Korean ?</span><br><br>
+                            <input type="radio" name="quiz_2" value="A"> A. 그와 그녀
+                            <input type="radio" name="quiz_2" value="B"> B. 그들 둘 다
+                            <input type="radio" name="quiz_2" value="C"> C. 남자
+                            <input type="radio" name="quiz_2" value="D"> D. 여자
+                            <br><br>
+                        </div>
+<!~~ 
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ ~~>
+                        <div class="quiz">
+                            <span>4. Which words corresponding to this pronunciation ?</span>
+                            <audio id="aud_4Q" src="https://www.book2.nl/book2/KO/SOUND/0015.mp3"></audio>
+                            <button id="btn_4Q" class="btn btn-primary col-md-1">Play</button> <br><br> 
+                            <input type="radio" name="quiz_4" value="A"> A. 저는 여기 있어요
+                            <input type="radio" name="quiz_4" value="B"> B. 저와 당신
+                            <input type="radio" name="quiz_4" value="C"> C. 우리 둘 다
+                            <input type="radio" name="quiz_4" value="D"> D. 그
+                            <br><br>
+                        </div>
+
+                        <div class="quiz">
+                            <span>5. What is the pronunciation of "아이" ?</span><br><br>
+                            <input type="radio" name="quiz_3" value="A">
+                            <audio id="aud_3A" src="https://www.book2.nl/book2/KO/SOUND/0011.mp3"></audio>
+                            <button id="btn_3A" class="btn btn-primary col-md-1">A</button> 
+                            <input type="radio" name="quiz_3" value="B">
+                            <audio id="aud_3B" src="https://www.book2.nl/book2/KO/SOUND/0012.mp3"></audio>
+                            <button id="btn_3B" class="btn btn-primary col-md-1">B</button> 
+                            <input type="radio" name="quiz_3" value="C">
+                            <audio id="aud_3C" src="https://www.book2.nl/book2/KO/SOUND/0013.mp3"></audio>
+                            <button id="btn_3C" class="btn btn-primary col-md-1">C</button> 
+                            <input type="radio" name="quiz_3" value="D">
+                            <audio id="aud_3D" src="https://www.book2.nl/book2/KO/SOUND/0014.mp3"></audio>
+                            <button id="btn_3D" class="btn btn-primary col-md-1">D</button> 
+                            <br><br>
+                        </div>
+<!~~ 
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ ~~>
+
+<!~~ 
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ ~~>
+                        <div class="quiz">
+                            <span>6. How to say "my family" in Korean ?</span><br><br> 
+                            <input type="radio" name="quiz_5" value="A">
+                            <audio id="aud_5A" src="https://www.book2.nl/book2/KO/SOUND/0013.mp3"></audio>
+                            <button id="btn_5A" class="btn btn-primary col-md-1">A</button> 
+                            <input type="radio" name="quiz_5" value="B">
+                            <audio id="aud_5B" src="https://www.book2.nl/book2/KO/SOUND/0010.mp3"></audio>
+                            <button id="btn_5B" class="btn btn-primary col-md-1">B</button> 
+                            <input type="radio" name="quiz_5" value="C">
+                            <audio id="aud_5C" src="https://www.book2.nl/book2/KO/SOUND/0009.mp3"></audio>
+                            <button id="btn_5C" class="btn btn-primary col-md-1">C</button> 
+                            <input type="radio" name="quiz_5" value="D">
+                            <audio id="aud_5D" src="https://www.book2.nl/book2/KO/SOUND/0008.mp3"></audio>
+                            <button id="btn_5D" class="btn btn-primary col-md-1">D</button> 
+                            <br><br>
+                        </div>
+ -->
+                        
+<!-- 
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ -->
+
+<!-- 
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ -->
+<!-- 
+                    <span>7. What is the meaning of "저" ?</span><br><br> 
+                        <input type="radio" name="quiz_7" value="A">A. I
+                        <input type="radio" name="quiz_7" value="B">B. I and you
+                        <input type="radio" name="quiz_7" value="C">C. both of us
+                        <input type="radio" name="quiz_7" value="D">D. he
+                        <br><br>
+<!~~ 
+                    </form> 
+                    <form id="quiz_1" class="col-md-8" method="post" target="hidden_frame">
+ ~~>
+                    <span>1. What is the meaning of "저" ?</span><br><br> 
+                        <input type="radio" name="quiz_1" value="A">A. I
+                        <input type="radio" name="quiz_1" value="B">B. I and you
+                        <input type="radio" name="quiz_1" value="C">C. both of us
+                        <input type="radio" name="quiz_1" value="D">D. he
+                        <br><br>
+ -->                    
+<!--                     <button id="submit" class="btn btn-primary col-md-2" type="submit">submit</button> -->
+                    </form>                     
+                        
+<!--                         <iframe name="fraSubmit" id="fraSubmit"> -->
+<!--                         Id: <input type="text" name="Id" class="attr"/><br> -->
+<!-- 
+                        imdbId: <input type="text" name="imdbId" class="attr"/><br>
+                        Imdb Link: <input type="text" name="Imdb Link" class="attr"/><br>                        
+                        Title: <input type="text" name="Title" class="attr"/><br>
+                        Genre: <input type="text" name="Genre" class="attr"/><br>
+                        Poster: <input type="text" name="Poster" class="attr"/><br>
+                        Director: <input type="text" name="Director" class="attr"/><br>
+                        Actors: <input type="text" name="Actors" class="attr"/><br>
+<!~~                         Year: <input type="text" name="Year" class="attr"/><br> ~~>
+                        Runtime(Minutes): <input type="text" name="Runtime(Minutes)" class="attr"/><br>
+                        Rating: <input type="text" name="Rating" class="attr"/><br>
+                        Votes: <input type="text" name="Votes" class="attr"/><br>
+                        Revenue(Millions): <input type="text" name="Revenue(Millions)" class="attr"/><br>
+                        Metascore: <input type="text" name="Metascore" class="attr"/><br>
+                        Summary: <input type="text" name="Summary" class="attr"/><br>        
+ -->                
+    <!--                     <textarea id="input" class="form-control mr-sm-2" placeholder="Input the item to add"></textarea> -->
+<!--                         <div class="col-md-4"></div>                         -->
+<!--                         <button id="submit" class="btn btn-primary col-md-2" type="submit">submit</button> -->
+<!--                         </iframe> -->
+                      
+<!--                     <div id="link" class="col-md-2"><a href="/view_item/5">link to the new item</a></div>   -->
+<!--                     <div id="link" class="col-md-2"></div>   -->
+                    <iframe name="hidden_frame" id="hidden_frame" style="display:none"></iframe>
+                </div>
+                <div id="score_bar"></div>
+                <div id="answer_bar"></div>
+                <div id="cong_bar"></div>
+<!--                 <div id="answer_bar"></div> -->
+<!--                 <div class="col-md-3"></div> -->
+<!--                 <div id="return_label" class="ui-widget-header col-md-3"><a class="nav-link" href="/return">Return to review</a></div> -->
+            </div>
+        {% endblock %}  
+    </body>
+</html>
+
+
+
